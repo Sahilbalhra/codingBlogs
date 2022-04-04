@@ -52,7 +52,7 @@
 }
 
 .description {
-  margin: 4rem 0;
+
   line-height: 1.5;
   font-size: 1.5rem;
 }
@@ -130,4 +130,11 @@
 }
 .mainNav ul li:hover{
   font-size: 1.2rem;
+}
+.myImg{
+  border-radius:10px;
+  /* margin: 10px !important; */
+}
+.imgWrapper{
+  padding: 20px 0px;
 }
