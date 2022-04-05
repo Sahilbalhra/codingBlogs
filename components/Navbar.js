@@ -19,6 +19,7 @@ const Navbar = () => {
           <li>Contact</li>
         </Link>
       </ul>
+      <hr/>
     </nav>
   );
 };
