@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  justify-content:flex-start;
+  justify-content: flex-start;
   padding-top: 3rem;
 }
 
@@ -52,7 +52,6 @@
 }
 
 .description {
-
   line-height: 1.5;
   font-size: 1.5rem;
 }
@@ -128,13 +127,13 @@
   font-weight: bold;
   cursor: pointer;
 }
-.mainNav ul li:hover{
+.mainNav ul li:hover {
   font-size: 1.2rem;
 }
-.myImg{
-  border-radius:10px;
+.myImg {
+  border-radius: 10px;
   /* margin: 10px !important; */
 }
-.imgWrapper{
+.imgWrapper {
   padding: 20px 0px;
 }
