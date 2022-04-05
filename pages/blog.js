@@ -14,7 +14,7 @@ const Blog = () => {
         return apiData.json();
       })
       .then((parseData) => {
-        console.log(parseData);
+        // console.log(parseData);
         setBlogs(parseData);
       });
   }, []);
