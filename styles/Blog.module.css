@@ -14,7 +14,8 @@
 }
 .blogItemh3 {
   cursor: pointer;
-}
-.blogItemh3:hover {
+  font-size: 2rem;
+  }
+/* .blogItemh3:hover {
   font-size: larger;
-}
+} */
