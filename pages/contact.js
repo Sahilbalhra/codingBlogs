@@ -8,7 +8,28 @@ const Contact = () => {
   const [desc, setDesc] = useState();
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, email, phone, desc);
+    // console.log(name, email, phone, desc);
+    const data = { name, email, phone, desc };
+
+    fetch("http://localhost:3000/api/postcontact/", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        console.log("Success:", data);
+        alert("Thanks for contacting us");
+        setDesc('');
+        setEmail('');
+        setName('');
+        setPhone('');
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
   const handleChange = (e) => {
     if (e.target.name == "name") {
@@ -19,10 +40,8 @@ const Contact = () => {
       setPhone(e.target.value);
     } else if (e.target.name == "desc") {
       setDesc(e.target.value);
-        // console.log(e.target.value);
-  };
-      
-    
+      // console.log(e.target.value);
+    }
 
     // console.log(e.target.value);
   };
