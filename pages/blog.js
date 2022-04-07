@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import * as fs from "fs";
 
 import styles from "../styles/Blog.module.css";
 // import data from "../blogdata/how-to-learn-flask.json"
@@ -36,9 +37,22 @@ const Blog = (props) => {
     </div>
   );
 };
-export async function getServerSideProps(context) {
-  let data = await fetch("http://localhost:3000/api/blogs");
-  let allblogs = await data.json();
+
+export async function getStaticProps(context) {
+  // let data = await fetch("http://localhost:3000/api/blogs");
+  // let allblogs = await data.json();
+  let data = await fs.promises.readdir("blogdata");
+  // res.status(200).json(data);
+  let myFiles;
+  let allblogs = [];
+
+  for (let index = 0; index < data.length; index++) {
+    let item = data[index];
+    // console.log(item);
+    myFiles = await fs.promises.readFile("blogdata/" + item, "utf-8");
+    // console.log(myFiles);
+    allblogs.push(JSON.parse(myFiles));
+  }
 
   return {
     props: { allblogs }, // will be passed to the page component as props

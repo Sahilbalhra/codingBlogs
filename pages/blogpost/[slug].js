@@ -1,10 +1,11 @@
+import * as fs from "fs";
 // import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/BlogPost.module.css";
 //step 1: find the file according to the slug
 //step 2: Populate through the and Display them
 
-const slug = (props) => {
+const Slug = (props) => {
   const [blog, setBlog] = useState(props.myBlog);
   // const router = useRouter();
   // useEffect(() => {
@@ -32,14 +33,26 @@ const slug = (props) => {
     </div>
   );
 };
-export async function getServerSideProps(context) {
-  const { slug } = context.query;
-  let data = await fetch(`http://localhost:3000/api/getblog?slug=${slug}`);
-  let myBlog = await data.json();
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { slug: "how-to-learn-flask" } },
+      { params: { slug: "how-to-learn-javascript" } },
+      { params: { slug: "how-to-learn-nextjs" } },
+    ],
+    fallback: true, // false or 'blocking'
+  };
+}
+export async function getStaticProps(context) {
+  // const { slug } = context.query;
+  // let data = await fetch(`http://localhost:3000/api/getblog?slug=${slug}`);
+  // let myBlog = await data.json();
+  const { slug } = context.params;
+  let myBlog = await fs.promises.readFile(`blogdata/${slug}.json`, "utf-8");
 
   return {
-    props: { myBlog }, // will be passed to the page component as props
+    props: { myBlog: JSON.parse(myBlog) }, // will be passed to the page component as props
   };
 }
 
-export default slug;
+export default Slug;
