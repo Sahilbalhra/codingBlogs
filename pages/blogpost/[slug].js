@@ -7,6 +7,9 @@ import styles from "../../styles/BlogPost.module.css";
 
 const Slug = (props) => {
   const [blog, setBlog] = useState(props.myBlog);
+  function createMarkup(content) {
+    return {__html: content};
+  }
   // const router = useRouter();
   // useEffect(() => {
   //   if (!router.isReady) return;
@@ -28,7 +31,8 @@ const Slug = (props) => {
       <main className={styles.main}>
         <h1>{blog && blog.title}</h1>
         <hr />
-        <div>{blog && blog.content}</div>
+        {/* <div>{blog && blog.content}</div> */}
+        {blog && <div dangerouslySetInnerHTML={createMarkup(blog.content)}></div>}
       </main>
     </div>
   );
