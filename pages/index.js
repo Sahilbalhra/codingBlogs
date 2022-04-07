@@ -9,7 +9,7 @@ export default function Home() {
         h2 {
           font-size: 38px;
         }
-        h3{
+        h3 {
           font-size: 28px;
         }
       `}</style>
@@ -21,7 +21,7 @@ export default function Home() {
           href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTQ-OdYjeNTHrpuh7lMt5TR2DdySHXaz2sSA&usqp=CAU"
         />
       </Head>
-     
+
       <main className={styles.main}>
         <h1 className={styles.title}>Coding Blogs</h1>
         <div className={styles.imgWrapper}>
@@ -31,7 +31,7 @@ export default function Home() {
             width="237"
             height="158"
           /> */}
-         <img
+          <img
             className={styles.myImg}
             src="/home.jpg"
             width="237"
